@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/src/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="module" src="/src/main.ts"></script>
+    <title>Quote</title>
+  </head>
+  <body>
+    <main id="app" class="grid grid-cols-1 text-center w-lg min-w-3xs bg-white px-5 py-7 rounded-2xl">
+      <h1 class="m-3 text-3xl font-bold">Quote Of The Day</h1>
+
+      <div class="relative my-10">
+        <p id="QuoteDisplay">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi beatae quae voluptatem iusto ab deserunt!
+        </p>
+        <p id="QuoteAuthor" class="absolute right-0 m-5">Lorem, ipsum.</p>
+      </div>
+
+      <section class="flex justify-between flex-wrap items-center mt-5">
+        <div class="flex gap-1">
+          <button class="action"><i class="fa-solid fa-volume-high"></i></button>
+          <button class="action"><i class="fa-solid fa-copy"></i></button>
+          <button class="action"><i class="fa-brands fa-x-twitter"></i></button>
+        </div>
+
+        <button class="bg-blue-500 text-white rounded-4xl p-4 whitespace-nowrap">New Quote</button>
+      </section>
+    </main>
+  </body>
+</html>
