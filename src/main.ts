@@ -1,4 +1,3 @@
-const API_URL = 'https://api.realinspire.live/v1/quotes/random?maxLength=100';
 const author = document.querySelector<HTMLParagraphElement>('#QuoteAuthor')!;
 const quote = document.querySelector<HTMLParagraphElement>('#QuoteDisplay')!;
 const newQuoteBtn = document.querySelector<HTMLButtonElement>('#newQuoteBtn')!;
@@ -8,6 +7,8 @@ const tweetBtn = document.querySelector<HTMLButtonElement>('#tweetBtn')!;
 
 let quoteText = '';
 let quoteAuthor = '';
+
+const API_URL = 'https://api.realinspire.live/v1/quotes/random?maxLength=100';
 
 getQuote();
 
