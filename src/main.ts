@@ -6,8 +6,8 @@ const speakBtn = document.querySelector<HTMLButtonElement>('#ReadAloud')!;
 const copyBtn = document.querySelector<HTMLButtonElement>('#copyBtn')!;
 const tweetBtn = document.querySelector<HTMLButtonElement>('#tweetBtn')!;
 
-let Quote = '';
-let Author = '';
+let quoteText = '';
+let quoteAuthor = '';
 
 getQuote();
 
@@ -21,11 +21,11 @@ async function getQuote(): Promise<void> {
     const res = await fetch(API_URL);
     const data = await res.json();
     if (Array.isArray(data)) {
-      Quote = data[0].content;
-      Author = data[0].author;
+      quoteText = data[0].content;
+      quoteAuthor = data[0].author;
 
-      quote.textContent = Quote;
-      author.textContent = Author;
+      quote.textContent = `"${quoteText}"`;
+      author.textContent = `-- ${quoteAuthor}`;
     } else {
       quote.textContent = data.content;
       author.textContent = data.author;
@@ -37,7 +37,7 @@ async function getQuote(): Promise<void> {
 
 // read quote aloud
 speakBtn.addEventListener('click', () => {
-  const speakQuote = Quote;
+  const speakQuote = quoteText;
   const utterance = new SpeechSynthesisUtterance(speakQuote);
   window.speechSynthesis.cancel();
   const synth = window.speechSynthesis;
@@ -46,13 +46,19 @@ speakBtn.addEventListener('click', () => {
 
 // copy quote to clipboard
 
+quote.addEventListener('click', () => {
+  navigator.clipboard.writeText(quoteText);
+  alert('copied to clipboard');
+});
+
 copyBtn.addEventListener('click', () => {
-  navigator.clipboard.writeText(Quote);
+  navigator.clipboard.writeText(quoteText);
+  alert('copied to clipboard');
 });
 
 // post quote as tweet
 tweetBtn.addEventListener('click', () => {
-  const tweetText = `${Quote} - ${Author}`;
+  const tweetText = `${quoteText} - ${quoteAuthor}`;
 
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
