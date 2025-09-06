@@ -3,6 +3,7 @@ const author = document.querySelector<HTMLParagraphElement>('#QuoteAuthor')!;
 const quote = document.querySelector<HTMLParagraphElement>('#QuoteDisplay')!;
 const newQuoteBtn = document.querySelector<HTMLButtonElement>('#newQuoteBtn')!;
 const speakBtn = document.querySelector<HTMLButtonElement>('#ReadAloud')!;
+const copyBtn = document.querySelector<HTMLButtonElement>('#copyBtn')!;
 
 let Quote = '';
 
@@ -38,3 +39,10 @@ speakBtn.addEventListener('click', () => {
   const synth = window.speechSynthesis;
   synth.speak(utterance);
 });
+
+// copy quote to clipboard
+
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(Quote);
+});
+
